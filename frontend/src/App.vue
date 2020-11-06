@@ -12,19 +12,58 @@
         <p>Drag &amp; drop your image here</p>
       </div>
       <small>Or</small>
-      <input type="file" ref="fileDialog" accept="image/*" hidden />
+      <input
+        type="file"
+        ref="fileDialog"
+        accept="image/*"
+        hidden
+        @change="fileSelected"
+      />
       <button @click="openDialog">Choose a file</button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "App",
   components: {},
+  data() {
+    return {
+      selectedFile: null,
+    };
+  },
   methods: {
+    async saveImage(file) {
+      const fd = new FormData();
+      fd.append("image", file, file.name);
+
+      const result = await axios.post("http://localhost:3000/posts", fd);
+      console.log(result);
+    },
     openDialog() {
       this.$refs.fileDialog.click();
+    },
+    dragOverHandler(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.dataTransfer.dropEffect = "copy";
+    },
+    async dropHandler(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      var file = e.dataTransfer.files[0];
+      if (file.length > 1) {
+        alert("You can only update one file at a time");
+      } else {
+        await this.saveImage(file);
+      }
+    },
+    async fileSelected() {
+      const file = event.target.files[0];
+      await this.saveImage(file);
     },
   },
 };
