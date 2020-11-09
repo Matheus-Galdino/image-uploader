@@ -11,8 +11,7 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "api/upload",
       "environmentVariables": {
         "CONTAINERNAME": "images",
         "AZURE_STORAGE_CONNECTIONSTRING": "DefaultEndpointsProtocol=https;AccountName=storageimageuploader;AccountKey=Gu1ND3ia5Bc30CiSUq+DFoo2uxK1UH2R+JqTAQbpGkYs0ePBLPjEXaEabp+VCxlB6JMqfizGi3+yNM3y+v5FKA==;EndpointSuffix=core.windows.net",

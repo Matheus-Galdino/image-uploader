@@ -24,5 +24,6 @@ C:\Users\mathe\OneDrive\Área de Trabalho\Matheus\NewEra\DevChallenges\image-upl
 C:\Users\mathe\OneDrive\Área de Trabalho\Matheus\NewEra\DevChallenges\image-uploader\API\API\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
 C:\Users\mathe\OneDrive\Área de Trabalho\Matheus\NewEra\DevChallenges\image-uploader\API\API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\mathe\OneDrive\Área de Trabalho\Matheus\NewEra\DevChallenges\image-uploader\API\API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\mathe\OneDrive\Área de Trabalho\Matheus\NewEra\DevChallenges\image-uploader\API\API\bin\Debug\netcoreapp3.1\System.Linq.Async.dll
 C:\Users\mathe\OneDrive\Área de Trabalho\Matheus\NewEra\DevChallenges\image-uploader\API\API\obj\Debug\netcoreapp3.1\API.csproj.CoreCompileInputs.cache
 C:\Users\mathe\OneDrive\Área de Trabalho\Matheus\NewEra\DevChallenges\image-uploader\API\API\obj\Debug\netcoreapp3.1\API.MvcApplicationPartsAssemblyInfo.cache

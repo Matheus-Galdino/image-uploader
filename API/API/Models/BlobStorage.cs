@@ -1,37 +1,34 @@
-﻿using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
+using Azure.Storage.Blobs;
 using System.Threading.Tasks;
 
 namespace API.Models
 {
     public class BlobStorage
     {
-        private string connectionString;
+        private readonly string connectionString;
         private readonly BlobContainerClient containerClient;
 
         public BlobStorage()
-        {            
+        {
             this.connectionString = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONNECTIONSTRING");
-            this.containerClient = new BlobContainerClient(connectionString, Environment.GetEnvironmentVariable("CONTAINERNAME"));
+            this.containerClient = new BlobContainerClient(this.connectionString, Environment.GetEnvironmentVariable("CONTAINERNAME"));
         }
 
         public async Task UploadFile(Stream stream, string fileName)
         {
-            BlobClient blobClient = containerClient.GetBlobClient(fileName);
+            BlobClient blobClient = this.containerClient.GetBlobClient(fileName);
 
             await blobClient.UploadAsync(stream, true);
         }
 
-        public async Task<List<BlobItem>> GetAllFiles()
+        public async Task<Stream> GetFile(string name)
         {
-            List<BlobItem> blobs = new List<BlobItem>();            
-            await foreach (var item in containerClient.GetBlobsAsync())            
-                blobs.Add(item);            
+            var blobClient = this.containerClient.GetBlobClient(name);
+            var download = await blobClient.DownloadAsync();
 
-            return blobs;
+            return download.Value.Content;
         }
     }
 }
